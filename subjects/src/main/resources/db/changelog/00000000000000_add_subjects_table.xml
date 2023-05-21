@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="00000000000000" author="andres.atehortua">
+        <createTable tableName="subjects">
+            <column name="subject_id" type="BIGINT">
+                <constraints primaryKey="true"
+                             primaryKeyName="subjects_subject_id_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"
+                             unique="true"
+                             uniqueConstraintName="subjects_name_key"/>
+            </column>
+            <column name="description" type="VARCHAR(250)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="professor_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="00000000000001" author="andres.atehortua">
+        <createSequence sequenceName="subjects_sequence"
+                        startValue="1050" incrementBy="50"/>
+    </changeSet>
+</databaseChangeLog>

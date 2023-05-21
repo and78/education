@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>users</module>
+		<module>subjects</module>
 	</modules>
 
 </project>
