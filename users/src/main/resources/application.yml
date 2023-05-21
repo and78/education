@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: users
+    r2dbc:
+        url: r2dbc:postgresql://localhost:5433/users
+        username: sa
+        password: sa
+
+    liquibase:
+        url: jdbc:postgresql://localhost:5433/users
+        default-schema: public
+        user: sa
+        password: sa
+        change-log: "classpath:liquibase/master.xml"
+
+server:
+    port: 8092
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka

@@ -13,4 +13,8 @@
 		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
+	<modules>
+		<module>users</module>
+	</modules>
+
 </project>
