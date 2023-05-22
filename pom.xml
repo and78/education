@@ -16,6 +16,7 @@
 	<modules>
 		<module>users</module>
 		<module>subjects</module>
+		<module>courses</module>
 	</modules>
 
 </project>
