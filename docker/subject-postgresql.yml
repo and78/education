@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  subjects-postgresql:
+    image: postgres:15.2
+    environment:
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=sa
+      - POSTGRES_DB=subjects
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./volumes/subjects-pg-data:/var/lib/postgresql/data
