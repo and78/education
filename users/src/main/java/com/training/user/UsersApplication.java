@@ -4,7 +4,9 @@ import com.training.user.config.properties.ApplicationProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 @EnableConfigurationProperties(ApplicationProperties.class)
 public class UsersApplication {
