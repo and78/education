@@ -6,8 +6,8 @@ import com.training.course.service.CourseService;
 import com.training.course.web.resources.CourseRequest;
 import com.training.course.web.resources.CourseResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Service;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 
 import static com.training.course.config.Constants.ID;
 
-@Service
+@Configuration
 @RequiredArgsConstructor
 public class CoursesRouteHandler {
 

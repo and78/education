@@ -1,4 +1,4 @@
-package com.training.subjects.dto;
+package com.training.course.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

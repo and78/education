@@ -1,5 +1,6 @@
 package com.training.subjects.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Table(name = "subjects")
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Subject {
 
     @Id
@@ -32,5 +34,6 @@ public class Subject {
     private String description;
 
     @NotNull
-    private Long professorId;
+    private String professorName;
+
 }

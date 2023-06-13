@@ -10,6 +10,6 @@ public record SubjectRequest(
 
         String description,
 
-        @NotNull(message = "professorId mut not be null")
-        Long professorId) {
+        @NotNull(message = "professorName mut not be null")
+        String professorName) {
 }

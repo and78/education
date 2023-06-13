@@ -16,6 +16,9 @@ spring:
     liquibase:
         default-schema: public
 
+    kafka:
+        bootstrapServers: "localhost:9092"
+
 server:
     port: 0
 
@@ -29,3 +32,15 @@ eureka:
 users:
     service:
         url: http://localhost:8092/api/users/
+
+kafka:
+    topic:
+        courses-service:
+            name: "courses-topic"
+            groupId: "courses-group"
+        subjects-service:
+            name: "subjects-topic"
+            groupId: "subjects-group"
+        courses-subject-updated:
+            name: "courses-subject-updated-topic"
+            groupId: "courses-subject-updated-group"

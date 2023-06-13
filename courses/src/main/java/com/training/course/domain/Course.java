@@ -1,7 +1,7 @@
 package com.training.course.domain;
 
+import jakarta.annotation.Nonnull;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Document
+@Document(value = "courses")
 public class Course {
 
-    @Id
+    @Nonnull
     private String id;
 
     private String name;
@@ -21,8 +21,6 @@ public class Course {
 
     private LocalDate endDate;
 
-    private List<Long> subjectIds = new ArrayList<>();
-
-    private Long professorId;
+    private List<Subject> subjects = new ArrayList<>();
 
 }

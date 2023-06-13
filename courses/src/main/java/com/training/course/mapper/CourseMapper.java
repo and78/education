@@ -1,5 +1,6 @@
 package com.training.course.mapper;
 
+import com.training.course.common.CourseCommandEvent;
 import com.training.course.domain.Course;
 import com.training.course.dto.CourseDto;
 import com.training.course.web.resources.CourseRequest;
@@ -10,7 +11,8 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
-        unmappedTargetPolicy = ReportingPolicy.ERROR)
+        unmappedTargetPolicy = ReportingPolicy.ERROR,
+        uses = SubjectMapper.class)
 public interface CourseMapper {
 
     CourseDto toCourseDto(Course course);
@@ -20,7 +22,12 @@ public interface CourseMapper {
 
     CourseResponse toResponse(CourseDto courseDto);
 
+    @Mapping(target = "subjects", source = "subjectIds")
     @Mapping(target = "id", ignore = true)
     CourseDto toCourseDto(CourseRequest courseRequest);
+
+    @Mapping(target = "courseId", source = "id")
+    @Mapping(target = "subjectIds", source = "subjects")
+    CourseCommandEvent toEvent(CourseDto course);
 
 }

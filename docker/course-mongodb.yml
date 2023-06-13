@@ -8,7 +8,6 @@ services:
     volumes:
       - ./volumes/mongo:/data/db
 
-
   courses-mongo-express:
     image: mongo-express
     ports:

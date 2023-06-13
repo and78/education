@@ -10,10 +10,9 @@ public record CourseResponse(
         String name,
         LocalDate startDate,
         LocalDate endDate,
-        List<Long> subjectIds,
-        Long professorId) {
+        List<SubjectResponse> subjects) {
 
     public CourseResponse {
-        if (Objects.isNull(subjectIds)) subjectIds = Collections.emptyList();
+        if (Objects.isNull(subjects)) subjects = Collections.emptyList();
     }
 }

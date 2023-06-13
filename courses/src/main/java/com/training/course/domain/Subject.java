@@ -1,14 +1,16 @@
-package com.training.subjects.dto;
+package com.training.course.domain;
 
-import lombok.AllArgsConstructor;
+import jakarta.annotation.Nonnull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Document
 @NoArgsConstructor
-@AllArgsConstructor
-public class SubjectDto {
+public class Subject {
 
+    @Nonnull
     private Long id;
 
     private String name;

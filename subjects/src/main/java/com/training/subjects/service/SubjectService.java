@@ -6,12 +6,12 @@ import java.util.List;
 
 interface SubjectService {
 
-    List<SubjectDto> findAll();
+    List<SubjectDto> findAll(int page, int size);
 
     SubjectDto findById(Long id);
 
-    Long save(SubjectDto request);
+    SubjectDto save(SubjectDto request);
 
-    void deleteById(Long id);
+    SubjectDto update(SubjectDto dto);
 
 }

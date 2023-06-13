@@ -1,6 +1,7 @@
 package com.training.subjects.web.resources;
 
-public record SubjectResponse(String name,
+public record SubjectResponse(Long id,
+                              String name,
                               String description,
-                              Long professorId) {
+                              String professorName) {
 }

@@ -1,5 +1,6 @@
 package com.training.subjects.mapper;
 
+import com.training.subjects.common.SubjectCreatedEvent;
 import com.training.subjects.domain.Subject;
 import com.training.subjects.dto.SubjectDto;
 import com.training.subjects.web.resources.SubjectRequest;
@@ -9,20 +10,21 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface SubjectMapper {
 
     SubjectResponse toResponse(SubjectDto subjectDto);
 
+    @Mapping(target = "id", ignore = true)
     SubjectDto toDto(SubjectRequest request);
 
     SubjectDto toDto(Subject request);
 
-    @Mapping(target = "id", ignore = true)
     Subject toEntity(SubjectDto request);
 
-    @Mapping(target = "id", ignore = true)
-    Subject toEntity(SubjectRequest request);
+    SubjectCreatedEvent toEvent(String courseId, List<Subject> subjects);
 
 }

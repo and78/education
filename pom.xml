@@ -14,11 +14,10 @@
 	</properties>
 
 	<modules>
-		<module>users</module>
 		<module>subjects</module>
 		<module>courses</module>
 		<module>eureka</module>
 		<module>apigateway</module>
-	</modules>
+    </modules>
 
 </project>

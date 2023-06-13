@@ -20,8 +20,8 @@ class SubjectWrapperServiceImpl implements SubjectWrapperService {
     private final SubjectMapper subjectMapper;
 
     @Override
-    public List<SubjectResponse> findAll() {
-        return subjectService.findAll()
+    public List<SubjectResponse> findAll(final int page, final int size) {
+        return subjectService.findAll(page, size)
                 .stream()
                 .map(subjectMapper::toResponse)
                 .toList();
@@ -35,16 +35,25 @@ class SubjectWrapperServiceImpl implements SubjectWrapperService {
     }
 
     @Override
-    public Long save(final SubjectRequest request) {
+    public SubjectResponse save(final SubjectRequest request) {
         final Function<SubjectRequest, SubjectDto> toSubject = subjectMapper::toDto;
         return toSubject
                 .andThen(subjectService::save)
+                .andThen(subjectMapper::toResponse)
                 .apply(request);
     }
 
     @Override
-    public void deleteById(final Long id) {
-        subjectService.deleteById(id);
+    public SubjectResponse update(final Long id, final SubjectRequest request) {
+        final Function<SubjectRequest, SubjectDto> toSubject = subjectMapper::toDto;
+        return toSubject
+                .andThen(subjectDto -> {
+                    subjectDto.setId(id);
+                    return subjectDto;
+                })
+                .andThen(subjectService::update)
+                .andThen(subjectMapper::toResponse)
+                .apply(request);
     }
 
 }

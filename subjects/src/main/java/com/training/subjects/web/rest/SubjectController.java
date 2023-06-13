@@ -5,18 +5,21 @@ import com.training.subjects.web.resources.SubjectRequest;
 import com.training.subjects.web.resources.SubjectResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -28,8 +31,12 @@ public class SubjectController {
     private final SubjectWrapperService subjectWrapperService;
 
     @GetMapping("/subjects")
-    public ResponseEntity<List<SubjectResponse>> getAllSubjects() {
-        return ResponseEntity.ok(subjectWrapperService.findAll());
+    public ResponseEntity<List<SubjectResponse>> getAllSubjects(
+            @RequestParam(value = "page", defaultValue = "0")
+            @PositiveOrZero(message = "page must be grater than or equal to zero") int page,
+            @RequestParam(value = "size", defaultValue = "10")
+            @Positive(message = "size must be grater than zero") int size) {
+        return ResponseEntity.ok(subjectWrapperService.findAll(page, size));
     }
 
     @GetMapping("/subjects/{id}")
@@ -38,16 +45,15 @@ public class SubjectController {
     }
 
     @PostMapping("/subjects")
-    public ResponseEntity<String> createSubject(HttpServletRequest httpRequest, @Valid @RequestBody final SubjectRequest request) {
-        final String subjectId = subjectWrapperService.save(request).toString();
-        return ResponseEntity.created(
-                URI.create(String.join("/", httpRequest.getRequestURL().toString(), subjectId))
-        ).build();
+    public ResponseEntity<SubjectResponse> createSubject(HttpServletRequest httpRequest, @Valid @RequestBody final SubjectRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(subjectWrapperService.save(request));
     }
 
-    @DeleteMapping("/subjects/{id}")
-    public ResponseEntity<SubjectResponse> deleteSubjectById(@PathVariable(name = "id") Long id) {
-        subjectWrapperService.deleteById(id);
-        return ResponseEntity.accepted().build();
+    @PutMapping("/subjects/{id}")
+    public ResponseEntity<SubjectResponse> updateSubject(HttpServletRequest httpRequest,
+                                                         @PathVariable(name = "id") Long id,
+                                                         @Valid @RequestBody final SubjectRequest request) {
+        return ResponseEntity.ok(subjectWrapperService.update(id, request));
     }
+
 }

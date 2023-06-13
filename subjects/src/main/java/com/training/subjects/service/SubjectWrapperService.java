@@ -7,12 +7,12 @@ import java.util.List;
 
 public interface SubjectWrapperService {
 
-    List<SubjectResponse> findAll();
+    List<SubjectResponse> findAll(int page, int size);
 
     SubjectResponse findById(Long id);
 
-    Long save(SubjectRequest request);
+    SubjectResponse save(SubjectRequest request);
 
-    void deleteById(Long id);
+    SubjectResponse update(Long id, SubjectRequest request);
 
 }
