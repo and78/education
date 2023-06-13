@@ -24,7 +24,7 @@ public class RouterConfig {
     @Bean
     public RouterFunction<ServerResponse> highLevelRouter() {
         return RouterFunctions.route()
-                .path("api/courses", this::courseRouterFunction)
+                .path("api", this::courseRouterFunction)
                 .build();
     }
 

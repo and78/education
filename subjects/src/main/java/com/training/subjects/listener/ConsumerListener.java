@@ -1,7 +1,7 @@
 package com.training.subjects.listener;
 
-import com.training.subjects.common.CourseCommandEvent;
-import com.training.subjects.mapper.JsonMapper;
+import com.training.common.event.CourseCommandEvent;
+import com.training.common.mapper.JsonMapper;
 import com.training.subjects.mapper.SubjectMapper;
 import com.training.subjects.repository.SubjectRepository;
 import com.training.subjects.service.EventProducerService;

@@ -1,6 +1,6 @@
 package com.training.course.mapper;
 
-import com.training.course.common.CourseCommandEvent;
+import com.training.common.event.CourseCommandEvent;
 import com.training.course.domain.Course;
 import com.training.course.dto.CourseDto;
 import com.training.course.web.resources.CourseRequest;

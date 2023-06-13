@@ -1,16 +1,12 @@
-package com.training.course.mapper;
+package com.training.common.mapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.training.course.exception.ObjectConversionException;
-import lombok.extern.slf4j.Slf4j;
+import com.training.common.exception.ObjectConversionException;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
-@Slf4j
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
-        unmappedTargetPolicy = ReportingPolicy.ERROR)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR)
 public abstract class JsonMapper {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -19,7 +15,6 @@ public abstract class JsonMapper {
         try {
             return objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            log.error(e.getLocalizedMessage());
             throw new ObjectConversionException();
         }
     }
@@ -28,7 +23,6 @@ public abstract class JsonMapper {
         try {
             return objectMapper.readValue(json, tClass);
         } catch (JsonProcessingException e) {
-            log.error(e.getLocalizedMessage());
             throw new ObjectConversionException();
         }
     }

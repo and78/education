@@ -1,6 +1,6 @@
-package com.training.course.common;
+package com.training.common.event;
 
-import com.training.course.dto.SubjectDto;
+import com.training.common.dto.CommonSubjectDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,6 @@ public class SubjectCreatedEvent {
 
     private String courseId;
 
-    private List<SubjectDto> subjects = new ArrayList<>();
+    private List<CommonSubjectDto> subjects = new ArrayList<>();
 
 }

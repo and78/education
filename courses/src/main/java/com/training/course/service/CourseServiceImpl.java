@@ -1,10 +1,10 @@
 package com.training.course.service;
 
-import com.training.course.common.CourseCommandEvent;
+import com.training.common.event.CourseCommandEvent;
+import com.training.common.mapper.JsonMapper;
 import com.training.course.dto.CourseDto;
 import com.training.course.exception.CourseNotFoundException;
 import com.training.course.mapper.CourseMapper;
-import com.training.course.mapper.JsonMapper;
 import com.training.course.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

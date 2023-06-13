@@ -1,11 +1,11 @@
 package com.training.course.listener;
 
-import com.training.course.common.SubjectCreatedEvent;
-import com.training.course.common.SubjectUpdatedEvent;
+import com.training.common.event.SubjectCreatedEvent;
+import com.training.common.event.SubjectUpdatedEvent;
+import com.training.common.mapper.JsonMapper;
 import com.training.course.domain.Course;
 import com.training.course.domain.Subject;
 import com.training.course.dto.SubjectDto;
-import com.training.course.mapper.JsonMapper;
 import com.training.course.mapper.SubjectMapper;
 import com.training.course.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +46,7 @@ public class ConsumerListener {
         Optional.ofNullable(subjectUpdatedEvent)
                 .map(SubjectUpdatedEvent::getSubject)
                 .filter(subjectDto -> Objects.nonNull(subjectDto.getId()))
+                .map(subjectMapper::toSubjectDto)
                 .ifPresent(subjectDto ->
                         courseRepository.findAllBySubjectsId(subjectDto.getId())
                                 .map(course -> getCourseWithNewSubjects(subjectDto, course))

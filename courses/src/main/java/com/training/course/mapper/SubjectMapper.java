@@ -1,5 +1,6 @@
 package com.training.course.mapper;
 
+import com.training.common.dto.CommonSubjectDto;
 import com.training.course.domain.Subject;
 import com.training.course.dto.SubjectDto;
 import org.mapstruct.Mapper;
@@ -17,7 +18,9 @@ public abstract class SubjectMapper {
 
     public abstract SubjectDto toSubjectDto(Subject dto);
 
-    public abstract List<Subject> toSubjectCollection(List<SubjectDto> dto);
+    public abstract SubjectDto toSubjectDto(CommonSubjectDto dto);
+
+    public abstract List<Subject> toSubjectCollection(List<CommonSubjectDto> dto);
 
     public SubjectDto toSubjectDto(Long subjectId) {
         SubjectDto subjectDto = new SubjectDto();

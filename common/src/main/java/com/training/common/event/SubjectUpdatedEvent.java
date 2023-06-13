@@ -1,6 +1,6 @@
-package com.training.subjects.common;
+package com.training.common.event;
 
-import com.training.subjects.dto.SubjectDto;
+import com.training.common.dto.CommonSubjectDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SubjectUpdatedEvent {
 
-    SubjectDto subject;
+    CommonSubjectDto subject;
 
 }

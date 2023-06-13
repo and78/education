@@ -1,10 +1,10 @@
 package com.training.subjects.mapper;
 
-import com.training.subjects.common.SubjectCreatedEvent;
 import com.training.subjects.domain.Subject;
 import com.training.subjects.dto.SubjectDto;
 import com.training.subjects.web.resources.SubjectRequest;
 import com.training.subjects.web.resources.SubjectResponse;
+import com.training.common.event.SubjectCreatedEvent;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;

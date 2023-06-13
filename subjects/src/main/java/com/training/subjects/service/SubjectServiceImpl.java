@@ -1,10 +1,10 @@
 package com.training.subjects.service;
 
-import com.training.subjects.common.SubjectUpdatedEvent;
+import com.training.common.event.SubjectUpdatedEvent;
+import com.training.common.mapper.JsonMapper;
 import com.training.subjects.domain.Subject;
 import com.training.subjects.dto.SubjectDto;
 import com.training.subjects.exception.SubjectNotFoundException;
-import com.training.subjects.mapper.JsonMapper;
 import com.training.subjects.mapper.SubjectMapper;
 import com.training.subjects.repository.SubjectRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.training.course.common;
+package com.training.common.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

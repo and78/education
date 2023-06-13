@@ -1,20 +1,7 @@
 package com.training.course.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.training.common.dto.CommonSubjectDto;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class SubjectDto {
-
-    private Long id;
-
-    private String name;
-
-    private String description;
-
-    private String professorName;
+public class SubjectDto extends CommonSubjectDto {
 
 }

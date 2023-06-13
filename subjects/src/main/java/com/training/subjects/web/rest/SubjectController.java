@@ -30,7 +30,7 @@ public class SubjectController {
 
     private final SubjectWrapperService subjectWrapperService;
 
-    @GetMapping("/subjects")
+    @GetMapping
     public ResponseEntity<List<SubjectResponse>> getAllSubjects(
             @RequestParam(value = "page", defaultValue = "0")
             @PositiveOrZero(message = "page must be grater than or equal to zero") int page,
@@ -39,17 +39,17 @@ public class SubjectController {
         return ResponseEntity.ok(subjectWrapperService.findAll(page, size));
     }
 
-    @GetMapping("/subjects/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<SubjectResponse> getSubjectById(@PathVariable(name = "id") Long id) {
         return ResponseEntity.ok(subjectWrapperService.findById(id));
     }
 
-    @PostMapping("/subjects")
+    @PostMapping
     public ResponseEntity<SubjectResponse> createSubject(HttpServletRequest httpRequest, @Valid @RequestBody final SubjectRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(subjectWrapperService.save(request));
     }
 
-    @PutMapping("/subjects/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<SubjectResponse> updateSubject(HttpServletRequest httpRequest,
                                                          @PathVariable(name = "id") Long id,
                                                          @Valid @RequestBody final SubjectRequest request) {
