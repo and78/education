@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: subjects
+    datasource:
+        url: jdbc:h2:mem:db/subjects
+        driver-class-name: org.h2.Driver
+        username: sa
+        password: sa
+        hikari:
+            auto-commit: false
+
+kafka:
+    topic:
+        courses-service:
+            name: "courses-topic"
+            groupId: "courses-group"
+        subjects-service:
+            name: "subjects-topic"
+            groupId: "subjects-group"
+        courses-subject-updated:
+            name: "courses-subject-updated-topic"
+            groupId: "courses-subject-updated-group"
