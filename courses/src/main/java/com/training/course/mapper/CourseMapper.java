@@ -17,7 +17,6 @@ public interface CourseMapper {
 
     CourseDto toCourseDto(Course course);
 
-    @Mapping(target = "id", ignore = true)
     Course toEntity(CourseDto course);
 
     CourseResponse toResponse(CourseDto courseDto);

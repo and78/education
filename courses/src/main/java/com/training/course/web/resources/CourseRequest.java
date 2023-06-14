@@ -21,7 +21,7 @@ public record CourseRequest(
 
         List<Long> subjectIds,
 
-        Long professorId) {
+        String professorName) {
 
     public CourseRequest {
         if (Objects.isNull(subjectIds)) subjectIds = Collections.emptyList();

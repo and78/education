@@ -48,8 +48,7 @@ public class CourseServiceImpl implements CourseService {
     public Mono<CourseDto> updateCourse(String id, Mono<CourseDto> courseDto) {
         return courseRepository.findById(id)
                 .switchIfEmpty(Mono.defer(() -> Mono.error(CourseNotFoundException::new)))
-                .flatMap(course -> courseDto.map(courseMapper::toEntity)
-                        .doOnNext(entity -> entity.setId(id)))
+                .flatMap(course -> courseDto.map(courseMapper::toEntity))
                 .flatMap(courseRepository::save)
                 .map(courseMapper::toCourseDto)
                 .doOnSuccess(dto -> {
